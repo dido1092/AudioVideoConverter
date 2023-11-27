@@ -165,7 +165,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(683, 576);
+            ClientSize = new Size(670, 576);
             Controls.Add(progressBarAll);
             Controls.Add(buttonClear);
             Controls.Add(buttonBrowse);
