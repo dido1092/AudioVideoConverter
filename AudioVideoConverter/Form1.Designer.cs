@@ -47,7 +47,7 @@
             // 
             richTextBoxItems.Location = new Point(12, 74);
             richTextBoxItems.Name = "richTextBoxItems";
-            richTextBoxItems.Size = new Size(483, 340);
+            richTextBoxItems.Size = new Size(609, 340);
             richTextBoxItems.TabIndex = 0;
             richTextBoxItems.Text = "";
             // 
@@ -73,7 +73,7 @@
             // 
             // buttonStart
             // 
-            buttonStart.Location = new Point(433, 12);
+            buttonStart.Location = new Point(559, 12);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(62, 39);
             buttonStart.TabIndex = 3;
@@ -87,7 +87,7 @@
             comboBoxFormats.Items.AddRange(new object[] { "MP3", "MKV", "AVI", "FLV", "MP4" });
             comboBoxFormats.Location = new Point(89, 455);
             comboBoxFormats.Name = "comboBoxFormats";
-            comboBoxFormats.Size = new Size(126, 23);
+            comboBoxFormats.Size = new Size(107, 23);
             comboBoxFormats.TabIndex = 4;
             // 
             // label1
@@ -102,7 +102,7 @@
             // labelItems
             // 
             labelItems.AutoSize = true;
-            labelItems.Location = new Point(433, 417);
+            labelItems.Location = new Point(559, 417);
             labelItems.Name = "labelItems";
             labelItems.Size = new Size(42, 15);
             labelItems.TabIndex = 6;
@@ -122,7 +122,7 @@
             comboBoxDestination.FormattingEnabled = true;
             comboBoxDestination.Location = new Point(89, 498);
             comboBoxDestination.Name = "comboBoxDestination";
-            comboBoxDestination.Size = new Size(323, 23);
+            comboBoxDestination.Size = new Size(433, 23);
             comboBoxDestination.TabIndex = 8;
             // 
             // label2
@@ -136,9 +136,9 @@
             // 
             // buttonBrowse
             // 
-            buttonBrowse.Location = new Point(418, 497);
+            buttonBrowse.Location = new Point(528, 498);
             buttonBrowse.Name = "buttonBrowse";
-            buttonBrowse.Size = new Size(77, 23);
+            buttonBrowse.Size = new Size(93, 23);
             buttonBrowse.TabIndex = 10;
             buttonBrowse.Text = "Browse...";
             buttonBrowse.UseVisualStyleBackColor = true;
@@ -158,14 +158,14 @@
             // 
             progressBarAll.Location = new Point(12, 422);
             progressBarAll.Name = "progressBarAll";
-            progressBarAll.Size = new Size(400, 10);
+            progressBarAll.Size = new Size(510, 10);
             progressBarAll.TabIndex = 13;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(552, 576);
+            ClientSize = new Size(683, 576);
             Controls.Add(progressBarAll);
             Controls.Add(buttonClear);
             Controls.Add(buttonBrowse);
