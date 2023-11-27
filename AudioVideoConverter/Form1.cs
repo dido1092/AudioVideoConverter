@@ -11,7 +11,6 @@ namespace AudioVideoConverter
     {
         private static string pathToAddFiles = string.Empty;
         private static string destination = string.Empty;
-        //private static string pathToSaveFiles = string.Empty;
         private static string[] pathWithFiles = { };
         private static string[] allFiles = { };
         private static HashSet<string> filesNames = new HashSet<string>();
@@ -19,7 +18,7 @@ namespace AudioVideoConverter
         public Form1()
         {
             InitializeComponent();
-            Thread thread = new Thread(PathToDesctop);
+            Thread thread = new Thread(PathToDesktop);
             thread.Start();
         }
 
@@ -38,7 +37,7 @@ namespace AudioVideoConverter
             labelPath.Text = $"Path from: {pathToAddFiles}";
             labelItems.Text = $"Items: {filesNames.Count()}";
         }
-        private void PathToDesctop()
+        private void PathToDesktop()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             comboBoxDestination.Text = path;
@@ -54,10 +53,10 @@ namespace AudioVideoConverter
 
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
-            Save();
+            SaveDestination();
             comboBoxDestination.Text = destination;
         }
-        private void Save()
+        private void SaveDestination()
         {
             FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
 
@@ -100,7 +99,7 @@ namespace AudioVideoConverter
                 ShowReadOnly = true,
 
             };
-            return openFileDialog1;//new OpenFileDialog
+            return openFileDialog1;
 
         }
 
@@ -230,7 +229,6 @@ namespace AudioVideoConverter
             richTextBoxItems.Clear();
             pathToAddFiles = string.Empty;
             destination = string.Empty;
-            //pathToSaveFiles = string.Empty;
             pathWithFiles = null!;
         }
     }
