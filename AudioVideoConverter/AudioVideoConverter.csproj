@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>chinese_kuaishou_logo_icon_259360.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="chinese_kuaishou_logo_icon_259360.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FFMpegCore" Version="5.1.0" />

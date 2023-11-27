@@ -27,7 +27,10 @@ namespace AudioVideoConverter
             Clear();
             GetPath();
 
-            richTextBoxItems.Text = string.Join("\r\n", pathWithFiles);
+            if (pathWithFiles != null)
+            {
+                richTextBoxItems.Text = string.Join("\r\n", pathWithFiles);
+            }
 
             AddFilesToHasSet();
 

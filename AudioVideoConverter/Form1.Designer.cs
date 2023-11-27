@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             richTextBoxItems = new RichTextBox();
             buttonAdd = new Button();
             buttonRemove = new Button();
@@ -180,6 +181,7 @@
             Controls.Add(buttonAdd);
             Controls.Add(richTextBoxItems);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AuduioVideoConverter";
