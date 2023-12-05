@@ -40,8 +40,8 @@
             comboBoxDestination = new ComboBox();
             label2 = new Label();
             buttonBrowse = new Button();
-            buttonClear = new Button();
             progressBarAll = new ProgressBar();
+            label3 = new Label();
             SuspendLayout();
             // 
             // richTextBoxItems
@@ -84,9 +84,10 @@
             // 
             // comboBoxFormats
             // 
+            comboBoxFormats.AccessibleName = "";
             comboBoxFormats.FormattingEnabled = true;
             comboBoxFormats.Items.AddRange(new object[] { "MP3", "MKV", "AVI", "FLV", "MP4" });
-            comboBoxFormats.Location = new Point(89, 455);
+            comboBoxFormats.Location = new Point(89, 475);
             comboBoxFormats.Name = "comboBoxFormats";
             comboBoxFormats.Size = new Size(107, 23);
             comboBoxFormats.TabIndex = 4;
@@ -94,7 +95,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(15, 458);
+            label1.Location = new Point(19, 475);
             label1.Name = "label1";
             label1.Size = new Size(63, 15);
             label1.TabIndex = 5;
@@ -121,7 +122,7 @@
             // comboBoxDestination
             // 
             comboBoxDestination.FormattingEnabled = true;
-            comboBoxDestination.Location = new Point(89, 498);
+            comboBoxDestination.Location = new Point(89, 513);
             comboBoxDestination.Name = "comboBoxDestination";
             comboBoxDestination.Size = new Size(433, 23);
             comboBoxDestination.TabIndex = 8;
@@ -129,7 +130,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 501);
+            label2.Location = new Point(12, 516);
             label2.Name = "label2";
             label2.Size = new Size(70, 15);
             label2.TabIndex = 9;
@@ -137,23 +138,13 @@
             // 
             // buttonBrowse
             // 
-            buttonBrowse.Location = new Point(528, 498);
+            buttonBrowse.Location = new Point(528, 512);
             buttonBrowse.Name = "buttonBrowse";
             buttonBrowse.Size = new Size(93, 23);
             buttonBrowse.TabIndex = 10;
             buttonBrowse.Text = "Browse...";
             buttonBrowse.UseVisualStyleBackColor = true;
             buttonBrowse.Click += buttonBrowse_Click;
-            // 
-            // buttonClear
-            // 
-            buttonClear.Location = new Point(174, 12);
-            buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(62, 39);
-            buttonClear.TabIndex = 12;
-            buttonClear.Text = "Clear";
-            buttonClear.UseVisualStyleBackColor = true;
-            buttonClear.Click += buttonClear_Click;
             // 
             // progressBarAll
             // 
@@ -162,13 +153,22 @@
             progressBarAll.Size = new Size(510, 10);
             progressBarAll.TabIndex = 13;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(89, 457);
+            label3.Name = "label3";
+            label3.Size = new Size(56, 15);
+            label3.TabIndex = 14;
+            label3.Text = "Exp: MP3";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(670, 576);
+            Controls.Add(label3);
             Controls.Add(progressBarAll);
-            Controls.Add(buttonClear);
             Controls.Add(buttonBrowse);
             Controls.Add(label2);
             Controls.Add(comboBoxDestination);
@@ -202,7 +202,7 @@
         private ComboBox comboBoxDestination;
         private Label label2;
         private Button buttonBrowse;
-        private Button buttonClear;
         private ProgressBar progressBarAll;
+        private Label label3;
     }
 }

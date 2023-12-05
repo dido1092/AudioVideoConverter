@@ -127,7 +127,12 @@ namespace AudioVideoConverter
             string Flv = ".flv";
             string Mp4 = ".mp4";
             string Mkv = ".mkv";
-            string otherFormat = comboBoxFormats.Text;
+            string getAnotherFormat = comboBoxFormats.Text;
+            string anotherFormat = string.Empty;
+            if (getAnotherFormat[0] != '.')
+            {
+                anotherFormat = '.' + getAnotherFormat;
+            }
 
             progressBarAll.Minimum = 0;
             progressBarAll.Maximum = pathWithFiles.Length;
@@ -139,7 +144,7 @@ namespace AudioVideoConverter
                 && comboBoxFormats.Text != "MP4"
                 && comboBoxFormats.Text != "MKV")
             {
-                Convert(otherFormat);
+                Convert(anotherFormat);
             }
             else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
             {
@@ -221,10 +226,10 @@ namespace AudioVideoConverter
             }
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
+        //private void buttonClear_Click(object sender, EventArgs e)
+        //{
+        //    Clear();
+        //}
 
         private void Clear()
         {
