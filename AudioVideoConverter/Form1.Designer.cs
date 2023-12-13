@@ -42,13 +42,16 @@
             buttonBrowse = new Button();
             progressBarAll = new ProgressBar();
             label3 = new Label();
+            textBoxURL = new TextBox();
+            label4 = new Label();
+            buttonAddURL = new Button();
             SuspendLayout();
             // 
             // richTextBoxItems
             // 
-            richTextBoxItems.Location = new Point(12, 74);
+            richTextBoxItems.Location = new Point(12, 132);
             richTextBoxItems.Name = "richTextBoxItems";
-            richTextBoxItems.Size = new Size(609, 340);
+            richTextBoxItems.Size = new Size(609, 282);
             richTextBoxItems.TabIndex = 0;
             richTextBoxItems.Text = "";
             // 
@@ -113,7 +116,7 @@
             // labelPath
             // 
             labelPath.AutoSize = true;
-            labelPath.Location = new Point(12, 552);
+            labelPath.Location = new Point(12, 581);
             labelPath.Name = "labelPath";
             labelPath.Size = new Size(34, 15);
             labelPath.TabIndex = 7;
@@ -156,17 +159,46 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(89, 457);
+            label3.Location = new Point(202, 478);
             label3.Name = "label3";
             label3.Size = new Size(56, 15);
             label3.TabIndex = 14;
-            label3.Text = "Exp: MP3";
+            label3.Text = "Exp: AAC";
+            // 
+            // textBoxURL
+            // 
+            textBoxURL.Location = new Point(12, 93);
+            textBoxURL.Name = "textBoxURL";
+            textBoxURL.Size = new Size(510, 23);
+            textBoxURL.TabIndex = 15;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 75);
+            label4.Name = "label4";
+            label4.Size = new Size(28, 15);
+            label4.TabIndex = 16;
+            label4.Text = "URL";
+            // 
+            // buttonAddURL
+            // 
+            buttonAddURL.Location = new Point(528, 92);
+            buttonAddURL.Name = "buttonAddURL";
+            buttonAddURL.Size = new Size(93, 23);
+            buttonAddURL.TabIndex = 17;
+            buttonAddURL.Text = "Add URL";
+            buttonAddURL.UseVisualStyleBackColor = true;
+            buttonAddURL.Click += buttonAddURL_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(670, 576);
+            ClientSize = new Size(670, 605);
+            Controls.Add(buttonAddURL);
+            Controls.Add(label4);
+            Controls.Add(textBoxURL);
             Controls.Add(label3);
             Controls.Add(progressBarAll);
             Controls.Add(buttonBrowse);
@@ -204,5 +236,8 @@
         private Button buttonBrowse;
         private ProgressBar progressBarAll;
         private Label label3;
+        private TextBox textBoxURL;
+        private Label label4;
+        private Button buttonAddURL;
     }
 }

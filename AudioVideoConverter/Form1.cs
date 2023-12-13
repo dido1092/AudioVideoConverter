@@ -194,19 +194,19 @@ namespace AudioVideoConverter
 
                 //For .NotifyOnProgress()
                 //==============================================================================
-                Action<double> progressHandler = new Action<double>(p =>
-                {
-                    //progress value from 0 to 100
-                    Debug.WriteLine(p);
-                });
+                //Action<double> progressHandler = new Action<double>(p =>
+                //{
+                //    //progress value from 0 to 100
+                //    Debug.WriteLine(p);
+                //});
 
-                ShellObject shell = ShellObject.FromParsingName(pathWithFile);
-                // alternatively: shell.Properties.GetProperty("System.Media.Duration");
-                IShellProperty prop = shell.Properties.System.Media.Duration;
-                // Duration will be formatted as 00:44:08
-                string duration = prop.FormatForDisplay(PropertyDescriptionFormatOptions.None);
+                //ShellObject shell = ShellObject.FromParsingName(pathWithFile);
+                //// alternatively: shell.Properties.GetProperty("System.Media.Duration");
+                //IShellProperty prop = shell.Properties.System.Media.Duration;
+                //// Duration will be formatted as 00:44:08
+                //string duration = prop.FormatForDisplay(PropertyDescriptionFormatOptions.None);
 
-                TimeSpan ts = TimeSpan.Parse(duration);
+                //TimeSpan ts = TimeSpan.Parse(duration);
                 //==============================================================================
 
                 fileNewFormat += Mp3;
@@ -238,6 +238,11 @@ namespace AudioVideoConverter
             pathToAddFiles = string.Empty;
             destination = string.Empty;
             pathWithFiles = null!;
+        }
+
+        private void buttonAddURL_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
