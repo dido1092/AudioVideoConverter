@@ -42,6 +42,7 @@
             buttonBrowse = new Button();
             progressBarAll = new ProgressBar();
             label3 = new Label();
+            buttonClear = new Button();
             SuspendLayout();
             // 
             // richTextBoxItems
@@ -162,11 +163,22 @@
             label3.TabIndex = 14;
             label3.Text = "Exp: AAC";
             // 
+            // buttonClear
+            // 
+            buttonClear.Location = new Point(173, 12);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(62, 39);
+            buttonClear.TabIndex = 15;
+            buttonClear.Text = "Clear All";
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(670, 605);
+            Controls.Add(buttonClear);
             Controls.Add(label3);
             Controls.Add(progressBarAll);
             Controls.Add(buttonBrowse);
@@ -204,5 +216,6 @@
         private Button buttonBrowse;
         private ProgressBar progressBarAll;
         private Label label3;
+        private Button buttonClear;
     }
 }

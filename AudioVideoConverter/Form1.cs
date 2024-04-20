@@ -15,6 +15,7 @@ namespace AudioVideoConverter
         private static string[] pathWithFiles = { };
         private static List<string> allFilesWithPath = new List<string>();
         private static int countSongsAdded = 0;
+        private static bool clearAllButton = false;
         private static HashSet<string> filesNames = new HashSet<string>();
 
         public Form1()
@@ -26,7 +27,6 @@ namespace AudioVideoConverter
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //Clear();
             GetPath();
 
             if (pathWithFiles != null)
@@ -41,6 +41,8 @@ namespace AudioVideoConverter
 
             labelPath.Text = $"Path from: {pathToAddFiles}";
             labelItems.Text = $"Items: {filesNames.Count()}";
+
+            clearAllButton = false;
         }
         private void PathToDesktop()
         {
@@ -83,10 +85,10 @@ namespace AudioVideoConverter
                 //string songWithPath = pathWithFiles[0].ToString()!;
                 //allFilesWithPath pathWithFiles[0].ToString() + "\n";
             }
-            //for (int i = 0; i < countFiles; i++)
-            //{
-            allFilesWithPath.Add(pathWithFiles[0]);
-            //}
+            for (int i = 0; i < pathWithFiles.Length; i++)
+            {
+                allFilesWithPath.Add(pathWithFiles[i]);
+            }
             return pathWithFiles;
         }
 
@@ -146,7 +148,7 @@ namespace AudioVideoConverter
                 }
 
                 progressBarAll.Minimum = 0;
-                progressBarAll.Maximum = countSongsAdded;
+                progressBarAll.Maximum = allFilesWithPath.Count();
                 progressBarAll.Value = 0;
 
                 if (comboBoxFormats.Text != "MP3"
@@ -261,6 +263,23 @@ namespace AudioVideoConverter
         private void buttonAddURL_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+        private void ClearAll()
+        {
+            richTextBoxItems.Clear();
+            allFilesWithPath.Clear();
+            filesNames.Clear();
+            clearAllButton = true;
         }
     }
 }
