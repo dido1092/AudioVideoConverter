@@ -4,6 +4,7 @@ using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 using Microsoft.WindowsAPICodePack.Shell;
 using System.Diagnostics;
 using Xabe.FFmpeg;
+using System.Text;
 
 namespace AudioVideoConverter
 {
@@ -12,7 +13,8 @@ namespace AudioVideoConverter
         private static string pathToAddFiles = string.Empty;
         private static string destination = string.Empty;
         private static string[] pathWithFiles = { };
-        private static string[] allFiles = { };
+        private static List<string> allFilesWithPath = new List<string>();
+        private static int countSongsAdded = 0;
         private static HashSet<string> filesNames = new HashSet<string>();
 
         public Form1()
@@ -24,7 +26,7 @@ namespace AudioVideoConverter
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Clear();
+            //Clear();
             GetPath();
 
             if (pathWithFiles != null)
@@ -70,6 +72,7 @@ namespace AudioVideoConverter
         }
         private string[] GetPath()
         {
+            countSongsAdded++;
             OpenFileDialog openFileDialog1 = OpenFile();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -77,7 +80,13 @@ namespace AudioVideoConverter
                 pathToAddFiles = Path.GetDirectoryName(openFileDialog1.FileName)!;
 
                 pathWithFiles = openFileDialog1.FileNames;
+                //string songWithPath = pathWithFiles[0].ToString()!;
+                //allFilesWithPath pathWithFiles[0].ToString() + "\n";
             }
+            //for (int i = 0; i < countFiles; i++)
+            //{
+            allFilesWithPath.Add(pathWithFiles[0]);
+            //}
             return pathWithFiles;
         }
 
@@ -129,64 +138,72 @@ namespace AudioVideoConverter
             string Mkv = ".mkv";
             string getAnotherFormat = comboBoxFormats.Text;
             string anotherFormat = string.Empty;
-            if (getAnotherFormat[0] != '.')
+            try
             {
-                anotherFormat = '.' + getAnotherFormat;
+                if (getAnotherFormat[0] != '.')
+                {
+                    anotherFormat = '.' + getAnotherFormat;
+                }
+
+                progressBarAll.Minimum = 0;
+                progressBarAll.Maximum = countSongsAdded;
+                progressBarAll.Value = 0;
+
+                if (comboBoxFormats.Text != "MP3"
+                    && comboBoxFormats.Text != "AVI"
+                    && comboBoxFormats.Text != "FLV"
+                    && comboBoxFormats.Text != "MP4"
+                    && comboBoxFormats.Text != "MKV")
+                {
+                    Convert(anotherFormat);
+                }
+                else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
+                {
+                    Convert(Mp3);
+                }
+                else if (comboBoxFormats.SelectedItem.ToString() == "MKV")
+                {
+                    Convert(Mkv);
+                }
+                else if (comboBoxFormats.SelectedItem.ToString() == "AVI")
+                {
+                    Convert(Avi);
+                }
+                else if (comboBoxFormats.SelectedItem.ToString() == "FLV")
+                {
+                    Convert(Flv);
+                }
+                else if (comboBoxFormats.SelectedItem.ToString() == "MP4")
+                {
+                    Convert(Mp4);
+                }
+
+                MessageBox.Show("Waiting Complete");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select format please!");
+                //throw;
             }
 
-            progressBarAll.Minimum = 0;
-            progressBarAll.Maximum = pathWithFiles.Length;
-            progressBarAll.Value = 0;
-
-            if (comboBoxFormats.Text != "MP3"
-                && comboBoxFormats.Text != "AVI"
-                && comboBoxFormats.Text != "FLV"
-                && comboBoxFormats.Text != "MP4"
-                && comboBoxFormats.Text != "MKV")
-            {
-                Convert(anotherFormat);
-            }
-            else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
-            {
-                Convert(Mp3);
-            }
-            else if (comboBoxFormats.SelectedItem.ToString() == "MKV")
-            {
-                Convert(Mkv);
-            }
-            else if (comboBoxFormats.SelectedItem.ToString() == "AVI")
-            {
-                Convert(Avi);
-            }
-            else if (comboBoxFormats.SelectedItem.ToString() == "FLV")
-            {
-                Convert(Flv);
-            }
-            else if (comboBoxFormats.SelectedItem.ToString() == "MP4")
-            {
-                Convert(Mp4);
-            }
-
-            MessageBox.Show("Waiting Complete");
         }
 
         private void Convert(string Mp3)
         {
             int countFiles = 0;
 
-            foreach (var pathWithFile in pathWithFiles)
+            foreach (var file in filesNames)
             {
-                countFiles++;
-
-                string[] fileName = pathWithFile.Split('\\');
+                //string[] fileName = pathWithFile.Split('\\');
+                string[] fileName = file.Split('\\');
                 string fileNewFormat = string.Empty;
-                string file = fileName[fileName.Length - 1];
+                string file2 = fileName[fileName.Length - 1];
                 string[] arrNewFile = file.Split('.');
 
-                for (int i = 0; i < arrNewFile.Length - 1; i++)
+                for (int j = 0; j < arrNewFile.Length - 1; j++)
                 {
-                    fileNewFormat += arrNewFile[i];
-                    if (i < arrNewFile.Length - 2)
+                    fileNewFormat += arrNewFile[j];
+                    if (j < arrNewFile.Length - 2)
                     {
                         fileNewFormat += '.';
                     }
@@ -213,7 +230,7 @@ namespace AudioVideoConverter
                 destination = comboBoxDestination.Text;
 
                 string output2 = Path.Combine($"{destination}\\{fileNewFormat}");
-                string inputVideoPath = pathWithFile;
+                string inputVideoPath = allFilesWithPath[countFiles].ToString();//fileWithPath;
 
 
                 FFMpegArguments
@@ -222,6 +239,7 @@ namespace AudioVideoConverter
                     //.NotifyOnProgress(progressHandler, ts)
                     .ProcessSynchronously();
 
+                countFiles++;
                 progressBarAll.Value = countFiles;
             }
         }
@@ -242,7 +260,7 @@ namespace AudioVideoConverter
 
         private void buttonAddURL_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
