@@ -142,45 +142,50 @@ namespace AudioVideoConverter
             string anotherFormat = string.Empty;
             try
             {
-                if (getAnotherFormat[0] != '.')
+                if (clearAllButton == false)
                 {
-                    anotherFormat = '.' + getAnotherFormat;
-                }
 
-                progressBarAll.Minimum = 0;
-                progressBarAll.Maximum = allFilesWithPath.Count();
-                progressBarAll.Value = 0;
 
-                if (comboBoxFormats.Text != "MP3"
-                    && comboBoxFormats.Text != "AVI"
-                    && comboBoxFormats.Text != "FLV"
-                    && comboBoxFormats.Text != "MP4"
-                    && comboBoxFormats.Text != "MKV")
-                {
-                    Convert(anotherFormat);
-                }
-                else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
-                {
-                    Convert(Mp3);
-                }
-                else if (comboBoxFormats.SelectedItem.ToString() == "MKV")
-                {
-                    Convert(Mkv);
-                }
-                else if (comboBoxFormats.SelectedItem.ToString() == "AVI")
-                {
-                    Convert(Avi);
-                }
-                else if (comboBoxFormats.SelectedItem.ToString() == "FLV")
-                {
-                    Convert(Flv);
-                }
-                else if (comboBoxFormats.SelectedItem.ToString() == "MP4")
-                {
-                    Convert(Mp4);
-                }
+                    if (getAnotherFormat[0] != '.')
+                    {
+                        anotherFormat = '.' + getAnotherFormat;
+                    }
 
-                MessageBox.Show("Waiting Complete");
+                    progressBarAll.Minimum = 0;
+                    progressBarAll.Maximum = allFilesWithPath.Count();
+                    progressBarAll.Value = 0;
+
+                    if (comboBoxFormats.Text != "MP3"
+                        && comboBoxFormats.Text != "AVI"
+                        && comboBoxFormats.Text != "FLV"
+                        && comboBoxFormats.Text != "MP4"
+                        && comboBoxFormats.Text != "MKV")
+                    {
+                        Convert(anotherFormat);
+                    }
+                    else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
+                    {
+                        Convert(Mp3);
+                    }
+                    else if (comboBoxFormats.SelectedItem.ToString() == "MKV")
+                    {
+                        Convert(Mkv);
+                    }
+                    else if (comboBoxFormats.SelectedItem.ToString() == "AVI")
+                    {
+                        Convert(Avi);
+                    }
+                    else if (comboBoxFormats.SelectedItem.ToString() == "FLV")
+                    {
+                        Convert(Flv);
+                    }
+                    else if (comboBoxFormats.SelectedItem.ToString() == "MP4")
+                    {
+                        Convert(Mp4);
+                    }
+
+                    MessageBox.Show("Waiting Complete");
+                }
             }
             catch (Exception)
             {
