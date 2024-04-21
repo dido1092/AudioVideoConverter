@@ -276,7 +276,7 @@ namespace AudioVideoConverter
                 {
                     await DownloadYouTubeVideo(videoURL, outputDir);
 
-                    MessageBox.Show("Download file Success!");
+                    MessageBox.Show("Download Success!");
                 }
                 else
                 {
@@ -286,7 +286,7 @@ namespace AudioVideoConverter
             }
             catch (Exception)
             {
-                MessageBox.Show("Download file Unsuccess!");
+                MessageBox.Show("Download Unsuccess!");
             }
 
         }
