@@ -5,6 +5,7 @@ using Microsoft.WindowsAPICodePack.Shell;
 using System.Diagnostics;
 using Xabe.FFmpeg;
 using System.Text;
+using YoutubeExplode;
 
 namespace AudioVideoConverter
 {
@@ -284,7 +285,58 @@ namespace AudioVideoConverter
             richTextBoxItems.Clear();
             allFilesWithPath.Clear();
             filesNames.Clear();
+            textBoxURL.Clear();
             clearAllButton = true;
         }
+
+        private async void buttonDownloadURL_Click(object sender, EventArgs e)
+        {
+            string videoURL = textBoxURL.Text;
+            string outputDir = comboBoxDestination.Text;
+
+            try
+            {
+                await DownloadYouTubeVideo(videoURL, outputDir);
+
+                MessageBox.Show("Download file Success!");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Download file Unsuccess!");
+            }
+
+        }
+        static async Task DownloadYouTubeVideo(string videoUrl, string outputDirectory)
+        {
+            var youtube = new YoutubeClient();
+            var video = await youtube.Videos.GetAsync(videoUrl);
+
+            // Sanitize the video title to remove invalid characters from the file name
+            string sanitizedTitle = string.Join("_", video.Title.Split(Path.GetInvalidFileNameChars()));
+
+            // Get all available muxed streams
+            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(video.Id);
+            var muxedStreams = streamManifest.GetMuxedStreams().OrderByDescending(s => s.VideoQuality).ToList();
+
+            if (muxedStreams.Any())
+            {
+                var streamInfo = muxedStreams.First();
+                using var httpClient = new HttpClient();
+                var stream = await httpClient.GetStreamAsync(streamInfo.Url);
+                var datetime = DateTime.Now;
+
+                string outputFilePath = Path.Combine(outputDirectory, $"{sanitizedTitle}.{streamInfo.Container}");
+                using var outputStream = File.Create(outputFilePath);
+                await stream.CopyToAsync(outputStream);
+
+                Console.WriteLine("Download completed!");
+                Console.WriteLine($"Video saved as: {outputFilePath}{datetime}");
+            }
+            else
+            {
+                Console.WriteLine($"No suitable video stream found for {video.Title}.");
+            }
+        }
+
     }
 }

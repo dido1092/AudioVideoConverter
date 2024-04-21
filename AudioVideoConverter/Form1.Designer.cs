@@ -43,13 +43,15 @@
             progressBarAll = new ProgressBar();
             label3 = new Label();
             buttonClear = new Button();
+            textBoxURL = new TextBox();
+            buttonDownloadURL = new Button();
             SuspendLayout();
             // 
             // richTextBoxItems
             // 
-            richTextBoxItems.Location = new Point(12, 82);
+            richTextBoxItems.Location = new Point(12, 126);
             richTextBoxItems.Name = "richTextBoxItems";
-            richTextBoxItems.Size = new Size(609, 332);
+            richTextBoxItems.Size = new Size(609, 288);
             richTextBoxItems.TabIndex = 0;
             richTextBoxItems.Text = "";
             // 
@@ -105,7 +107,7 @@
             // labelItems
             // 
             labelItems.AutoSize = true;
-            labelItems.Location = new Point(559, 417);
+            labelItems.Location = new Point(528, 417);
             labelItems.Name = "labelItems";
             labelItems.Size = new Size(42, 15);
             labelItems.TabIndex = 6;
@@ -173,11 +175,30 @@
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += buttonClear_Click;
             // 
+            // textBoxURL
+            // 
+            textBoxURL.Location = new Point(12, 86);
+            textBoxURL.Name = "textBoxURL";
+            textBoxURL.Size = new Size(487, 23);
+            textBoxURL.TabIndex = 16;
+            // 
+            // buttonDownloadURL
+            // 
+            buttonDownloadURL.Location = new Point(505, 85);
+            buttonDownloadURL.Name = "buttonDownloadURL";
+            buttonDownloadURL.Size = new Size(116, 23);
+            buttonDownloadURL.TabIndex = 17;
+            buttonDownloadURL.Text = "Download URL";
+            buttonDownloadURL.UseVisualStyleBackColor = true;
+            buttonDownloadURL.Click += buttonDownloadURL_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(670, 605);
+            Controls.Add(buttonDownloadURL);
+            Controls.Add(textBoxURL);
             Controls.Add(buttonClear);
             Controls.Add(label3);
             Controls.Add(progressBarAll);
@@ -217,5 +238,7 @@
         private ProgressBar progressBarAll;
         private Label label3;
         private Button buttonClear;
+        private TextBox textBoxURL;
+        private Button buttonDownloadURL;
     }
 }
