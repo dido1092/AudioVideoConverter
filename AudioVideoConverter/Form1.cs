@@ -266,6 +266,8 @@ namespace AudioVideoConverter
             filesNames.Clear();
             textBoxURL.Clear();
             clearAllButton = true;
+            progressBarAll.Value = 0;
+            labelItems.Text = "Items:";
             buttonDownloadURL.BackColor = Color.White;
             comboBoxDestination.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
