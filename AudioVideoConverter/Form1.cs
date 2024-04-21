@@ -242,14 +242,14 @@ namespace AudioVideoConverter
             }
         }
 
-        private void Clear()
-        {
-            filesNames.Clear();
-            richTextBoxItems.Clear();
-            pathToAddFiles = string.Empty;
-            destination = string.Empty;
-            pathWithFiles = null!;
-        }
+        //private void Clear()
+        //{
+        //    filesNames.Clear();
+        //    richTextBoxItems.Clear();
+        //    pathToAddFiles = string.Empty;
+        //    destination = string.Empty;
+        //    pathWithFiles = null!;
+        //}
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
