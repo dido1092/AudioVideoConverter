@@ -45,6 +45,7 @@
             buttonClear = new Button();
             textBoxURL = new TextBox();
             buttonDownloadURL = new Button();
+            buttonSameDIR = new Button();
             SuspendLayout();
             // 
             // richTextBoxItems
@@ -57,7 +58,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(12, 12);
+            buttonAdd.Location = new Point(12, 20);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(62, 39);
             buttonAdd.TabIndex = 1;
@@ -67,7 +68,7 @@
             // 
             // buttonRemove
             // 
-            buttonRemove.Location = new Point(90, 12);
+            buttonRemove.Location = new Point(89, 20);
             buttonRemove.Name = "buttonRemove";
             buttonRemove.Size = new Size(62, 39);
             buttonRemove.TabIndex = 2;
@@ -77,7 +78,7 @@
             // 
             // buttonStart
             // 
-            buttonStart.Location = new Point(559, 12);
+            buttonStart.Location = new Point(559, 20);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(62, 39);
             buttonStart.TabIndex = 3;
@@ -129,6 +130,7 @@
             comboBoxDestination.Name = "comboBoxDestination";
             comboBoxDestination.Size = new Size(433, 23);
             comboBoxDestination.TabIndex = 8;
+            comboBoxDestination.SelectedIndexChanged += comboBoxDestination_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -167,7 +169,7 @@
             // 
             // buttonClear
             // 
-            buttonClear.Location = new Point(173, 12);
+            buttonClear.Location = new Point(173, 20);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(62, 39);
             buttonClear.TabIndex = 15;
@@ -192,11 +194,22 @@
             buttonDownloadURL.UseVisualStyleBackColor = true;
             buttonDownloadURL.Click += buttonDownloadURL_Click;
             // 
+            // buttonSameDIR
+            // 
+            buttonSameDIR.Location = new Point(424, 28);
+            buttonSameDIR.Name = "buttonSameDIR";
+            buttonSameDIR.Size = new Size(75, 23);
+            buttonSameDIR.TabIndex = 18;
+            buttonSameDIR.Text = "Same DIR";
+            buttonSameDIR.UseVisualStyleBackColor = true;
+            buttonSameDIR.Click += buttonSameDIR_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(670, 605);
+            Controls.Add(buttonSameDIR);
             Controls.Add(buttonDownloadURL);
             Controls.Add(textBoxURL);
             Controls.Add(buttonClear);
@@ -240,5 +253,6 @@
         private Button buttonClear;
         private TextBox textBoxURL;
         private Button buttonDownloadURL;
+        private Button buttonSameDIR;
     }
 }

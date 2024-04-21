@@ -193,7 +193,6 @@ namespace AudioVideoConverter
 
             foreach (var file in filesNames)
             {
-                //string[] fileName = pathWithFile.Split('\\');
                 string[] fileName = file.Split('\\');
                 string fileNewFormat = string.Empty;
                 string file2 = fileName[fileName.Length - 1];
@@ -264,6 +263,7 @@ namespace AudioVideoConverter
             textBoxURL.Clear();
             clearAllButton = true;
             buttonDownloadURL.BackColor = Color.White;
+            comboBoxDestination.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
         private async void buttonDownloadURL_Click(object sender, EventArgs e)
@@ -325,5 +325,14 @@ namespace AudioVideoConverter
             }
         }
 
+        private void buttonSameDIR_Click(object sender, EventArgs e)
+        {
+            comboBoxDestination.Text = pathToAddFiles;
+        }
+
+        private void comboBoxDestination_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
