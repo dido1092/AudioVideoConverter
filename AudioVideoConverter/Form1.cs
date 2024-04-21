@@ -140,6 +140,8 @@ namespace AudioVideoConverter
             {
                 if (clearAllButton == false)
                 {
+                    buttonStart.BackColor = Color.Red;
+
                     if (getAnotherFormat[0] != '.')
                     {
                         anotherFormat = '.' + getAnotherFormat;
@@ -179,6 +181,8 @@ namespace AudioVideoConverter
                     }
 
                     MessageBox.Show("Waiting Complete");
+
+                    buttonStart.BackColor = Color.White;
                 }
             }
             catch (Exception)
@@ -280,6 +284,8 @@ namespace AudioVideoConverter
                     await DownloadYouTubeVideo(videoURL, outputDir);
 
                     MessageBox.Show("Download Success!");
+
+                    buttonDownloadURL.BackColor = Color.White;
                 }
                 else
                 {
@@ -290,6 +296,8 @@ namespace AudioVideoConverter
             catch (Exception)
             {
                 MessageBox.Show("Download Unsuccess!");
+
+                buttonDownloadURL.BackColor = Color.White;
             }
 
         }
