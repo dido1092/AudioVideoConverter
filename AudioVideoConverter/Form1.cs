@@ -83,8 +83,6 @@ namespace AudioVideoConverter
                 pathToAddFiles = Path.GetDirectoryName(openFileDialog1.FileName)!;
 
                 pathWithFiles = openFileDialog1.FileNames;
-                //string songWithPath = pathWithFiles[0].ToString()!;
-                //allFilesWithPath pathWithFiles[0].ToString() + "\n";
             }
             for (int i = 0; i < pathWithFiles.Length; i++)
             {
@@ -112,16 +110,13 @@ namespace AudioVideoConverter
 
                 ReadOnlyChecked = true,
                 ShowReadOnly = true,
-
             };
             return openFileDialog1;
-
         }
 
         private HashSet<string> AddFilesToHasSet()
         {
             string[] files = richTextBoxItems.Text.Split("\n");
-            //string[] files = Directory.GetFiles(path);
 
             for (int i = 0; i < files.Length; i++)
             {
@@ -145,8 +140,6 @@ namespace AudioVideoConverter
             {
                 if (clearAllButton == false)
                 {
-
-
                     if (getAnotherFormat[0] != '.')
                     {
                         anotherFormat = '.' + getAnotherFormat;
@@ -191,9 +184,7 @@ namespace AudioVideoConverter
             catch (Exception)
             {
                 MessageBox.Show("Select format please!");
-                //throw;
             }
-
         }
 
         private void Convert(string Mp3)
@@ -252,11 +243,6 @@ namespace AudioVideoConverter
             }
         }
 
-        //private void buttonClear_Click(object sender, EventArgs e)
-        //{
-        //    Clear();
-        //}
-
         private void Clear()
         {
             filesNames.Clear();
@@ -264,16 +250,6 @@ namespace AudioVideoConverter
             pathToAddFiles = string.Empty;
             destination = string.Empty;
             pathWithFiles = null!;
-        }
-
-        private void buttonAddURL_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
