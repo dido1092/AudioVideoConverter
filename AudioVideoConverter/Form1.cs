@@ -263,6 +263,7 @@ namespace AudioVideoConverter
             filesNames.Clear();
             textBoxURL.Clear();
             clearAllButton = true;
+            buttonDownloadURL.BackColor = Color.White;
         }
 
         private async void buttonDownloadURL_Click(object sender, EventArgs e)
@@ -274,6 +275,8 @@ namespace AudioVideoConverter
             {
                 if (comboBoxDestination.Text != "")
                 {
+                    buttonDownloadURL.BackColor = Color.Red;
+
                     await DownloadYouTubeVideo(videoURL, outputDir);
 
                     MessageBox.Show("Download Success!");
