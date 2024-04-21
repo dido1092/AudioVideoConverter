@@ -296,9 +296,17 @@ namespace AudioVideoConverter
 
             try
             {
-                await DownloadYouTubeVideo(videoURL, outputDir);
+                if (comboBoxDestination.Text != "")
+                {
+                    await DownloadYouTubeVideo(videoURL, outputDir);
 
-                MessageBox.Show("Download file Success!");
+                    MessageBox.Show("Download file Success!");
+                }
+                else
+                {
+                    MessageBox.Show("Choice a distination directory!");
+                }
+
             }
             catch (Exception)
             {
