@@ -50,9 +50,9 @@
             // 
             // richTextBoxItems
             // 
-            richTextBoxItems.Location = new Point(12, 126);
+            richTextBoxItems.Location = new Point(12, 127);
             richTextBoxItems.Name = "richTextBoxItems";
-            richTextBoxItems.Size = new Size(609, 288);
+            richTextBoxItems.Size = new Size(609, 287);
             richTextBoxItems.TabIndex = 0;
             richTextBoxItems.Text = "";
             // 
@@ -188,7 +188,7 @@
             // 
             buttonDownloadURL.Location = new Point(505, 85);
             buttonDownloadURL.Name = "buttonDownloadURL";
-            buttonDownloadURL.Size = new Size(116, 23);
+            buttonDownloadURL.Size = new Size(118, 23);
             buttonDownloadURL.TabIndex = 17;
             buttonDownloadURL.Text = "Download URL";
             buttonDownloadURL.UseVisualStyleBackColor = true;
@@ -230,7 +230,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AuduioVideoConverter";
+            Text = "AuduioVideoConverter Youtube Downloader";
             ResumeLayout(false);
             PerformLayout();
         }
