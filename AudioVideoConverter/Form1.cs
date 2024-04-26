@@ -140,54 +140,69 @@ namespace AudioVideoConverter
             {
                 if (clearAllButton == false)
                 {
-                    buttonStart.BackColor = Color.Red;
+                    if (richTextBoxItems.Text != "")
+                    {
+                        if (comboBoxFormats.Text != "")
+                        {
+                            buttonStart.BackColor = Color.Red;
 
-                    if (getAnotherFormat[0] != '.')
-                    {
-                        anotherFormat = '.' + getAnotherFormat;
-                    }
+                            if (getAnotherFormat[0] != '.')
+                            {
+                                anotherFormat = '.' + getAnotherFormat;
+                            }
 
-                    progressBarAll.Minimum = 0;
-                    progressBarAll.Maximum = allFilesWithPath.Count();
-                    progressBarAll.Value = 0;
+                            progressBarAll.Minimum = 0;
+                            progressBarAll.Maximum = allFilesWithPath.Count();
+                            progressBarAll.Value = 0;
 
-                    if (comboBoxFormats.Text != "MP3"
-                        && comboBoxFormats.Text != "AVI"
-                        && comboBoxFormats.Text != "FLV"
-                        && comboBoxFormats.Text != "MP4"
-                        && comboBoxFormats.Text != "MKV")
-                    {
-                        Convert(anotherFormat);
-                    }
-                    else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
-                    {
-                        Convert(Mp3);
-                    }
-                    else if (comboBoxFormats.SelectedItem.ToString() == "MKV")
-                    {
-                        Convert(Mkv);
-                    }
-                    else if (comboBoxFormats.SelectedItem.ToString() == "AVI")
-                    {
-                        Convert(Avi);
-                    }
-                    else if (comboBoxFormats.SelectedItem.ToString() == "FLV")
-                    {
-                        Convert(Flv);
-                    }
-                    else if (comboBoxFormats.SelectedItem.ToString() == "MP4")
-                    {
-                        Convert(Mp4);
-                    }
+                            if (comboBoxFormats.Text != "MP3"
+                                && comboBoxFormats.Text != "AVI"
+                                && comboBoxFormats.Text != "FLV"
+                                && comboBoxFormats.Text != "MP4"
+                                && comboBoxFormats.Text != "MKV")
+                            {
+                                Convert(anotherFormat);
+                            }
+                            else if (comboBoxFormats.SelectedItem.ToString() == "MP3")
+                            {
+                                Convert(Mp3);
+                            }
+                            else if (comboBoxFormats.SelectedItem.ToString() == "MKV")
+                            {
+                                Convert(Mkv);
+                            }
+                            else if (comboBoxFormats.SelectedItem.ToString() == "AVI")
+                            {
+                                Convert(Avi);
+                            }
+                            else if (comboBoxFormats.SelectedItem.ToString() == "FLV")
+                            {
+                                Convert(Flv);
+                            }
+                            else if (comboBoxFormats.SelectedItem.ToString() == "MP4")
+                            {
+                                Convert(Mp4);
+                            }
 
-                    MessageBox.Show("Waiting Complete");
+                            MessageBox.Show("Waiting Complete");
 
-                    buttonStart.BackColor = Color.White;
+                            buttonStart.BackColor = Color.White;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Select format please!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Add files please!");
+                    }
                 }
             }
+
             catch (Exception)
             {
-                MessageBox.Show("Select format please!");
+                //MessageBox.Show("Select files please!");
             }
         }
 
@@ -279,19 +294,26 @@ namespace AudioVideoConverter
 
             try
             {
-                if (comboBoxDestination.Text != "")
+                if (textBoxURL.Text != "")
                 {
-                    buttonDownloadURL.BackColor = Color.Red;
+                    if (comboBoxDestination.Text != "")
+                    {
+                        buttonDownloadURL.BackColor = Color.Red;
 
-                    await DownloadYouTubeVideo(videoURL, outputDir);
+                        await DownloadYouTubeVideo(videoURL, outputDir);
 
-                    MessageBox.Show("Download Success!");
+                        MessageBox.Show("Download Success!");
 
-                    buttonDownloadURL.BackColor = Color.White;
+                        buttonDownloadURL.BackColor = Color.White;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choice a distination directory!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Choice a distination directory!");
+                    MessageBox.Show("Enter URL please!");
                 }
 
             }
