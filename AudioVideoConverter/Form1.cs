@@ -72,6 +72,10 @@ namespace AudioVideoConverter
             {
                 destination = folderBrowserDialog1.SelectedPath;
             }
+            else
+            {
+                destination = comboBoxDestination.Text;
+            }
         }
         private string[] GetPath()
         {
