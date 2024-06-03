@@ -50,9 +50,9 @@
             // 
             // richTextBoxItems
             // 
-            richTextBoxItems.Location = new Point(12, 127);
+            richTextBoxItems.Location = new Point(12, 147);
             richTextBoxItems.Name = "richTextBoxItems";
-            richTextBoxItems.Size = new Size(609, 287);
+            richTextBoxItems.Size = new Size(609, 267);
             richTextBoxItems.TabIndex = 0;
             richTextBoxItems.Text = "";
             // 
@@ -60,7 +60,7 @@
             // 
             buttonAdd.Location = new Point(12, 20);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(62, 39);
+            buttonAdd.Size = new Size(70, 39);
             buttonAdd.TabIndex = 1;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@
             // 
             // buttonRemove
             // 
-            buttonRemove.Location = new Point(89, 20);
+            buttonRemove.Location = new Point(111, 20);
             buttonRemove.Name = "buttonRemove";
-            buttonRemove.Size = new Size(62, 39);
+            buttonRemove.Size = new Size(70, 39);
             buttonRemove.TabIndex = 2;
             buttonRemove.Text = "Remove";
             buttonRemove.UseVisualStyleBackColor = true;
@@ -78,11 +78,11 @@
             // 
             // buttonStart
             // 
-            buttonStart.Location = new Point(559, 20);
+            buttonStart.Location = new Point(528, 20);
             buttonStart.Name = "buttonStart";
-            buttonStart.Size = new Size(62, 39);
+            buttonStart.Size = new Size(93, 39);
             buttonStart.TabIndex = 3;
-            buttonStart.Text = "Start";
+            buttonStart.Text = "Convert";
             buttonStart.UseVisualStyleBackColor = true;
             buttonStart.Click += buttonStart_Click;
             // 
@@ -169,9 +169,9 @@
             // 
             // buttonClear
             // 
-            buttonClear.Location = new Point(173, 20);
+            buttonClear.Location = new Point(213, 20);
             buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(62, 39);
+            buttonClear.Size = new Size(70, 39);
             buttonClear.TabIndex = 15;
             buttonClear.Text = "Clear All";
             buttonClear.UseVisualStyleBackColor = true;
@@ -179,16 +179,16 @@
             // 
             // textBoxURL
             // 
-            textBoxURL.Location = new Point(12, 86);
+            textBoxURL.Location = new Point(12, 109);
             textBoxURL.Name = "textBoxURL";
-            textBoxURL.Size = new Size(487, 23);
+            textBoxURL.Size = new Size(510, 23);
             textBoxURL.TabIndex = 16;
             // 
             // buttonDownloadURL
             // 
-            buttonDownloadURL.Location = new Point(505, 85);
+            buttonDownloadURL.Location = new Point(528, 109);
             buttonDownloadURL.Name = "buttonDownloadURL";
-            buttonDownloadURL.Size = new Size(118, 23);
+            buttonDownloadURL.Size = new Size(93, 23);
             buttonDownloadURL.TabIndex = 17;
             buttonDownloadURL.Text = "Download URL";
             buttonDownloadURL.UseVisualStyleBackColor = true;
@@ -196,9 +196,9 @@
             // 
             // buttonSameDIR
             // 
-            buttonSameDIR.Location = new Point(424, 28);
+            buttonSameDIR.Location = new Point(12, 80);
             buttonSameDIR.Name = "buttonSameDIR";
-            buttonSameDIR.Size = new Size(75, 23);
+            buttonSameDIR.Size = new Size(70, 23);
             buttonSameDIR.TabIndex = 18;
             buttonSameDIR.Text = "Same DIR";
             buttonSameDIR.UseVisualStyleBackColor = true;

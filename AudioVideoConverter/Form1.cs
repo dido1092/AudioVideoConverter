@@ -288,7 +288,7 @@ namespace AudioVideoConverter
             progressBarAll.Value = 0;
             labelItems.Text = "Items:";
             buttonDownloadURL.BackColor = Color.White;
-            comboBoxDestination.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //comboBoxDestination.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
         private async void buttonDownloadURL_Click(object sender, EventArgs e)
