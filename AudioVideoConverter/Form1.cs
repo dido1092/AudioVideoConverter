@@ -43,6 +43,8 @@ namespace AudioVideoConverter
             labelPath.Text = $"Path from: {pathToAddFiles}";
             labelItems.Text = $"Items: {filesNames.Count()}";
 
+            //progressBarAll.Maximum = filesNames.Count();
+
             clearAllButton = false;
         }
         private void PathToDesktop()
@@ -59,6 +61,10 @@ namespace AudioVideoConverter
                 filesNames.Remove(selectedFile);
 
                 richTextBoxItems.Text = string.Join("\r\n", filesNames);
+
+                progressBarAll.Maximum = filesNames.Count();
+
+                labelItems.Text = $"Items: {filesNames.Count()}";
             }
             else
             {
@@ -138,7 +144,7 @@ namespace AudioVideoConverter
             return filesNames;
         }
 
-        private void buttonStart_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)//Button Convert
         {
             string Mp3 = ".mp3";
             string Avi = ".avi";
@@ -163,7 +169,8 @@ namespace AudioVideoConverter
                             }
 
                             progressBarAll.Minimum = 0;
-                            progressBarAll.Maximum = allFilesWithPath.Count();
+                            //progressBarAll.Maximum = allFilesWithPath.Count();
+                            progressBarAll.Maximum = filesNames.Count();
                             progressBarAll.Value = 0;
 
                             if (comboBoxFormats.Text != "MP3"
