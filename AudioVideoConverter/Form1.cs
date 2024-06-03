@@ -54,9 +54,16 @@ namespace AudioVideoConverter
         {
             string selectedFile = richTextBoxItems.SelectedText;
 
-            filesNames.Remove(selectedFile);
+            if (selectedFile != "")
+            {
+                filesNames.Remove(selectedFile);
 
-            richTextBoxItems.Text = string.Join("\r\n", filesNames);
+                richTextBoxItems.Text = string.Join("\r\n", filesNames);
+            }
+            else
+            {
+                MessageBox.Show("Select a song please!");
+            }
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e)
