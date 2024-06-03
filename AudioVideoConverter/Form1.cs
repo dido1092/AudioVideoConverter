@@ -43,8 +43,6 @@ namespace AudioVideoConverter
             labelPath.Text = $"Path from: {pathToAddFiles}";
             labelItems.Text = $"Items: {filesNames.Count()}";
 
-            //progressBarAll.Maximum = filesNames.Count();
-
             clearAllButton = false;
         }
         private void PathToDesktop()
@@ -268,15 +266,21 @@ namespace AudioVideoConverter
                 string inputVideoPath = allFilesWithPath[countFiles].ToString();//fileWithPath;
 
 
-                FFMpegArguments
-                    .FromFileInput(inputVideoPath)
-                    .OutputToFile(output2)
-                    //.NotifyOnProgress(progressHandler, ts)
-                    .ProcessSynchronously();
+                FFMpegArguments(output2, inputVideoPath);
 
                 countFiles++;
                 progressBarAll.Value = countFiles;
+                labelItems.Text = $"Items: {countFiles}/{filesNames.Count()}";
             }
+        }
+
+        private static void FFMpegArguments(string output2, string inputVideoPath)
+        {
+            FFMpegCore.FFMpegArguments
+                .FromFileInput(inputVideoPath)
+                .OutputToFile(output2)
+                //.NotifyOnProgress(progressHandler, ts)
+                .ProcessSynchronously();
         }
 
         //private void Clear()
@@ -381,6 +385,11 @@ namespace AudioVideoConverter
         }
 
         private void comboBoxDestination_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

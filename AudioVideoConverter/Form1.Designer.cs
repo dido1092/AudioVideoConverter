@@ -110,9 +110,9 @@
             labelItems.AutoSize = true;
             labelItems.Location = new Point(528, 417);
             labelItems.Name = "labelItems";
-            labelItems.Size = new Size(42, 15);
+            labelItems.Size = new Size(48, 15);
             labelItems.TabIndex = 6;
-            labelItems.Text = "Items: ";
+            labelItems.Text = "Items: 0";
             // 
             // labelPath
             // 
@@ -231,6 +231,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AuduioVideoConverter Youtube Downloader";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
