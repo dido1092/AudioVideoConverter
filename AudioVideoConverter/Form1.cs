@@ -6,6 +6,10 @@ using System.Diagnostics;
 using Xabe.FFmpeg;
 using System.Text;
 using YoutubeExplode;
+using VideoLibrary;
+using System.Windows;
+using Grpc.Core;
+using AngleSharp.Media;
 
 namespace AudioVideoConverter
 {
@@ -66,7 +70,7 @@ namespace AudioVideoConverter
             }
             else
             {
-                MessageBox.Show("Select a song please!");
+                System.Windows.MessageBox.Show("Select a song please!");
             }
         }
 
@@ -200,18 +204,18 @@ namespace AudioVideoConverter
                                 Convert(Mp4);
                             }
 
-                            MessageBox.Show("Waiting Complete");
+                            System.Windows.MessageBox.Show("Waiting Complete");
 
                             buttonStart.BackColor = Color.White;
                         }
                         else
                         {
-                            MessageBox.Show("Select format please!");
+                            System.Windows.MessageBox.Show("Select format please!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Add files please!");
+                        System.Windows.MessageBox.Show("Add files please!");
                     }
                 }
             }
@@ -312,6 +316,7 @@ namespace AudioVideoConverter
         private async void buttonDownloadURL_Click(object sender, EventArgs e)
         {
             string videoURL = textBoxURL.Text;
+
             string outputDir = comboBoxDestination.Text;
 
             try
@@ -322,62 +327,70 @@ namespace AudioVideoConverter
                     {
                         buttonDownloadURL.BackColor = Color.Red;
 
-                        await DownloadYouTubeVideo(videoURL, outputDir);
+                        //await DownloadYouTubeVideo(videoURL, outputDir);
 
-                        MessageBox.Show("Download Success!");
+                        var youTube = YouTube.Default;
+                        var video = youTube.GetVideo(videoURL);
+
+                        string fullName = video.FullName;
+
+                        File.WriteAllBytes(outputDir + "\\" + fullName, video.GetBytes());
+
+                        System.Windows.MessageBox.Show("Download Success!");
 
                         buttonDownloadURL.BackColor = Color.White;
                     }
                     else
                     {
-                        MessageBox.Show("Choice a distination directory!");
+                        System.Windows.MessageBox.Show("Choice a distination directory!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Enter URL please!");
+                    System.Windows.MessageBox.Show("Enter URL please!");
                 }
 
             }
             catch (Exception)
             {
-                MessageBox.Show("Download Unsuccess!");
+                System.Windows.MessageBox.Show("Download Unsuccess!");
 
                 buttonDownloadURL.BackColor = Color.White;
             }
 
         }
-        static async Task DownloadYouTubeVideo(string videoUrl, string outputDirectory)
-        {
-            var youtube = new YoutubeClient();
-            var video = await youtube.Videos.GetAsync(videoUrl);
+        //static async Task DownloadYouTubeVideo(string videoUrl, string outputDirectory)
+        //{
+        //    var youtube = new YoutubeClient();
+        //    var video = await youtube.Videos.GetAsync(videoUrl);
 
-            // Sanitize the video title to remove invalid characters from the file name
-            string sanitizedTitle = string.Join("_", video.Title.Split(Path.GetInvalidFileNameChars()));
 
-            // Get all available muxed streams
-            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(video.Id);
-            var muxedStreams = streamManifest.GetMuxedStreams().OrderByDescending(s => s.VideoQuality).ToList();
+        //    // Sanitize the video title to remove invalid characters from the file name
+        //    string sanitizedTitle = string.Join("_", video.Title.Split(Path.GetInvalidFileNameChars()));
 
-            if (muxedStreams.Any())
-            {
-                var streamInfo = muxedStreams.First();
-                using var httpClient = new HttpClient();
-                var stream = await httpClient.GetStreamAsync(streamInfo.Url);
-                var datetime = DateTime.Now;
+        //    // Get all available muxed streams
+        //    var streamManifest = await youtube.Videos.Streams.GetManifestAsync(video.Id);
+        //    var muxedStreams = streamManifest.GetMuxedStreams().OrderByDescending(s => s.VideoQuality.MaxHeight).ToList();
 
-                string outputFilePath = Path.Combine(outputDirectory, $"{sanitizedTitle}.{streamInfo.Container}");
-                using var outputStream = File.Create(outputFilePath);
-                await stream.CopyToAsync(outputStream);
+        //    if (muxedStreams.Any())
+        //    {
+        //        var streamInfo = muxedStreams.First();
+        //        using var httpClient = new HttpClient();
+        //        var stream = await httpClient.GetStreamAsync(streamInfo.Url);
+        //        var datetime = DateTime.Now;
 
-                Console.WriteLine("Download completed!");
-                Console.WriteLine($"Video saved as: {outputFilePath}{datetime}");
-            }
-            else
-            {
-                Console.WriteLine($"No suitable video stream found for {video.Title}.");
-            }
-        }
+        //        string outputFilePath = Path.Combine(outputDirectory, $"{sanitizedTitle}.{streamInfo.Container}");
+        //        using var outputStream = File.Create(outputFilePath);
+        //        await stream.CopyToAsync(outputStream);
+
+        //        Console.WriteLine("Download completed!");
+        //        Console.WriteLine($"Video saved as: {outputFilePath}{datetime}");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"No suitable video stream found for {video.Title}.");
+        //    }
+        //}
 
         private void buttonSameDIR_Click(object sender, EventArgs e)
         {
